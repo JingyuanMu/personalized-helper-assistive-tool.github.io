@@ -115,15 +115,54 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
+        <h2 class="title is-3">Motivation</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="item">
+            <h2 class="subtitle has-text-justified">
+              Virtual assistants, such as Google Assistant, Apple Siri, and Amazon Alexa, have become popular in the last decade [1, 2, 3]. However, 
+              these products collect user information that adversaries can target to steal and sell sensitive and personal data [4].
+              With the advancement of artificial intelligence (AI) in recent years, especially in large language models (LLMs), 
+              they have shown to possess greater capabilities while demanding less computational resources [5]. Combining the benefits 
+              of a smart assistant with the power and efficiency of LLMs, we would like to explore the possibility of developing a personalized
+              AI assistant to help users in every life activities while maintaining the balance of privacy, efficiency, and computational feasibility.<br><br>
+
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
         <h2 class="title is-3">System Overview</h2>
         <div class="columns is-centered has-text-centered">
           <div class="item">
             <img src="static/images/system.png" alt="Result Page Image" style="display: block; margin: 0 auto; width: auto; height: 30vw;" />
             <h2 class="subtitle has-text-justified">
-              The structure of SPADE system is designed to operate locally, ensuring privacy and efficiency through LangChain and Ollama.
-              At its core, the SPADE model processes user prompts to execute various tasks. It integrates with a local database containing contacts and files (e.g., PDFs) to manage user data securely and efficiently via RAG (retrieval-augmented generation).
-              The system supports multiple functionalities: sending emails, extracting text from documents, searching the web via an API, and scheduling events.
-              Each function is modular, allowing SPADE to interact with specific components as needed, such as accessing contacts for email tasks or files for text extraction, all while maintaining on-device processing to minimize external dependencies.
+              <br>Overall, the SPADE system is designed to be modular, local and efficient: <br>
+              <ul>
+                <li><b>- Modular</b>: Each functionality is independent and can be easily maintained and updated.</li>
+                <li><b>- Local</b>: Utilizing Ollama, the LLM is run locally, ensuring the confidentiality of personal information.</li>
+                <li><b>- Efficient</b>: By leveraging local LLMs and RAG, SPADE minimizes the programming effort and simplifies the computational complexity.</li>
+              </ul>
+
+              <br>The system is divided into three main components: <br>
+              <ul>
+                <li><b>- LLM</b>: The LLM is the core of the system, responsible for processing user prompts and managing conversations.</li>
+                <li><b>- Database</b>: The database contains user information, contacts and documents, which the LLM can access through RAG to perform tasks.</li>
+                <li><b>- Functionality</b>: The functionality includes all tasks that SPADE can perform. They are modular and independent.</li>
+              </ul>
+              
+              <br>The system is connected together through LangGraph and LangChain framework, alllowing the robust and efficient communication between the components.
+              The user interacts with the system through a simple interface, where they can input their requests.
+              Those requests are processed by the LLM, which decide which functionality to use based on the user input.
+              The current LLM is Llama 3.2 3B model, which is a small but capable LLM that can be run on a small GPU.
+              The LLM then retrieves the necessary information from the database or executes the task directly through the provided functionalities.
+              The current framework supports multiple functionalities: sending emails (via Gmail API), extracting content from documents, searching the web via an API (Tavily API), and scheduling events (Google Calendar API).
+              New functionalities can be easily integrated in the future due to the system's modularity.
+              In the event that the user input is not clear or additional inputs are required, the LLM will ask clarifying questions to ensure that the task is performed correctly.
             </h2>
           </div>
         </div>
@@ -169,7 +208,54 @@
       </div>
     </div>
   </section>
-  
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Limitation</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="item">
+            <h2 class="subtitle has-text-justified">
+              <br>SPADE is a proof-of-concept system that demonstrates the feasibility of using local LLMs for personal assistant tasks. 
+              However, it has several limitations that need to be addressed in future work:
+              <ul>
+                <li><b>- Limited Functionality</b>: The current implementation only supports a few functionalities, such as sending emails and scheduling events. 
+                  Future work should focus on expanding the range of supported tasks and improving the overall user experience.</li>
+                <li><b>- Performance</b>: The performance of the system may vary depending on the LLM's capabilities. Bigger models will perform better, but will also require more hardware resources (GPU, RAM).</li>
+                <li><b>- User Interface</b>: The current user interface is basic and could be improved to provide a more intuitive and user-friendly experience.</li>
+              </ul>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">References</h2>
+            <ol>
+              <li>
+                Apple. <em>Siri</em>.
+              </li>
+              <li>
+                Amazon. <em>Meet the new Alexa</em>.
+              </li>
+              <li>
+                Google. <em>Google Assistant</em>.
+              </li>
+              <li>
+                Kalhor, B., & Das, S. (2023). <em>Evaluating the security and privacy risk postures of virtual assistants</em>.
+              </li>
+              <li>
+                Minaee, S., Mikolov, T., Nikzad, N., Chenaghlou, M., Socher, R., Amatriain, X., & Gao, J. (2024). 
+                <em>Large language models: A survey</em>.
+              </li>
+            </ol>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container">
@@ -177,6 +263,9 @@
         <div class="column is-8">
           <div class="content">
             <p>
+              This project was developed as part of the course <a href="https://czhang0528.github.io/teaching/csce625-spring2025" target="_blank">CSCE 625: Artificial Intelligence</a> at Texas A&M University.<br>
+              The logo was generated by OpenAI's GPT-4o Image Generation.<br>
+              Microsoft Copilot and OpenAI's GPT-4o were used to assist in the development of this project, but the final implementation was done by the authors.<br>
               This page was built using a customized academic template.<br>
               This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
             </p>
